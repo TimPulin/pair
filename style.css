@@ -1,0 +1,136 @@
+:root {
+  --amount-colums: 4;
+  --gap: 20px;
+  --card-height: 100px;
+  --color-suc: #198754;
+  --color-p: #0d6efd;
+  --color-d: #dc3545;
+}
+
+.container-limit {
+  max-width: 1200px;
+}
+
+.title-app {
+  margin: 0;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.control {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.control__input {
+  max-width: 310px;
+  -moz-appearance:textfield;
+}
+
+.control__input::-webkit-outer-spin-button,
+.control__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.btn-start-again {
+  margin: 0 auto;
+  display: none;
+}
+
+.btn-start-again--open {
+  display: block;
+}
+
+.field {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 20px;
+  max-width: 500px;
+  overflow: hidden;
+  background-color: #eaeaea;
+  border-radius: 5px;
+}
+
+.field__card {
+  width: calc((100% / var(--amount-colums) ) - (var(--gap) * (var(--amount-colums) - 1) ) / var(--amount-colums) );
+  height: var(--card-height);
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform .3s ease-in, background .6s ease-in, box-shadow .3s ease-in;
+}
+
+.field__card--opened {
+  transform: rotateX(180deg);
+}
+
+.field__card--closed {
+  background-color: var(--color-p);
+  transition: background 1s ease;
+}
+
+.field__card--matched {
+  box-shadow: 1px 1px 5px var(--color-suc), -1px -1px 5px var(--color-suc);
+}
+
+.field__card--unmatched {
+  box-shadow: 1px 1px 5px var(--color-d), -1px -1px 5px var(--color-d);
+}
+
+.field__number {
+  font-size: 50px;
+  transform: rotateX(180deg);
+  transition: opacity .6s ease-in-out;
+}
+
+.field__card--closed .field__number {
+  opacity: 0;
+}
+
+.alert-win {
+  position: absolute;
+  top: 9999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px var(--color-suc), -1px -1px 5px var(--color-suc);
+  opacity: 0;
+  transition: opacity .5s ease-in;
+}
+
+.alert-win--open {
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+.layout-black {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000;
+  opacity: 0.5;
+  z-index: 50;
+  display: none;
+}
+
+.layout-black--open {
+  display: block;
+}
+
